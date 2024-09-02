@@ -11,7 +11,9 @@ namespace CleanArchitecture.Application.Users.Commands.CreateUser
                                     string ThirdName,
                                     string FamilyName,
                                     string Password,
-                                    string Email) : BaseCommand<Guid>;
+                                    string Email) : BaseCommand<Guid> {
+        public new required string UserName { get; init; }
+    }
 
     #endregion
 
