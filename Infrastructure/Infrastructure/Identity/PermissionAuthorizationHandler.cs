@@ -23,7 +23,7 @@ namespace CleanArchitecture.Infrastructure.Identity
 
             var hasPermission = context.User.Claims.Any(c => c.Type == Permissions.CLAIM_TYPE
                                                                       && c.Value == requirement.Permission
-                                                                      && c.Issuer == Issuer);
+                                                                     && c.Issuer == Issuer);
 
             if (hasPermission)
             {
