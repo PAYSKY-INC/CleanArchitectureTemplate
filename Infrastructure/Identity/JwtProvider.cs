@@ -53,13 +53,13 @@ namespace CleanArchitecture.Infrastructure.Identity
         {
             var userRoles = await UserManager.GetRolesAsync(user);
             var permissions = await GetUserRolesPermissions(userRoles);
-            var claimsIdentity = new ClaimsIdentity([
+            var claimsIdentity = new ClaimsIdentity(new List<Claim> {
                 new(JwtRegisteredClaimNames.Sub, Options.Subject!),
                 new(JwtRegisteredClaimNames.NameId, user.Id),
                 new(JwtRegisteredClaimNames.Name, user.UserName!),
                 new(JwtRegisteredClaimNames.Email, user.Email!),
                 new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-           ]);
+            });
             claimsIdentity.AddClaims(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
             claimsIdentity.AddClaims(permissions.Select(permission => new Claim(Permissions.CLAIM_TYPE, permission)));
 
