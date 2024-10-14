@@ -18,7 +18,7 @@ namespace CleanArchitecture.WebAPI.Services
         #endregion
 
         #region Properties
-        public string UserId => _httpContextAccessor.HttpContext?.User?.FindFirstValue(JwtRegisteredClaimNames.NameId) ?? "Anonymous";
+        public string UserId => _httpContextAccessor.HttpContext?.User?.FindFirstValue("uid") ?? "Anonymous";
         public string Username => _httpContextAccessor.HttpContext?.User?.FindFirstValue(JwtRegisteredClaimNames.Name) ?? "Anonymous";
         #endregion
 

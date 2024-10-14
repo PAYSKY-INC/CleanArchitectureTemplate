@@ -55,7 +55,7 @@ namespace CleanArchitecture.Infrastructure.Identity
             var permissions = await GetUserRolesPermissions(userRoles);
             var claimsIdentity = new ClaimsIdentity(new List<Claim> {
                 new(JwtRegisteredClaimNames.Sub, Options.Subject!),
-                new(JwtRegisteredClaimNames.NameId, user.Id),
+                new("uid", user.Id),
                 new(JwtRegisteredClaimNames.Name, user.UserName!),
                 new(JwtRegisteredClaimNames.Email, user.Email!),
                 new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
